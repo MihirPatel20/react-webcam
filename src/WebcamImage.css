@@ -1,0 +1,38 @@
+.Container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+.hiddenDiv {
+  position: absolute;
+  visibility: hidden;
+}
+
+img {
+  height: 400px;
+  object-fit: cover;
+}
+
+button {
+  background-color: crimson;
+  color: #fff;
+  margin-top: 10px;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+#captureBtn {
+  position: absolute;
+  bottom: 150px
+}
+#retakeBtn {
+    position: absolute;
+    bottom: 150px;
+}
+#downloadBtn {
+    position: absolute;
+    bottom: 100px;
+}
