@@ -1,7 +1,14 @@
 .Container {
   position: relative;
   width: 100vw;
+  min-height: 100vh;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+  border: 20px solid red;
 }
 .hiddenDiv {
   position: absolute;
@@ -9,7 +16,8 @@
 }
 
 img {
-  height: 400px;
+  height: 750px;
+  /* width: 1000px; */
   object-fit: cover;
 }
 
@@ -17,22 +25,26 @@ button {
   background-color: crimson;
   color: #fff;
   margin-top: 10px;
-  padding: 10px 40px;
+  padding: 20px;
   border: none;
-  border-radius: 25px;
+  border-radius: 10px;
+  width: 90px;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 
 #captureBtn {
   position: absolute;
-  bottom: 150px
+  right: 20px;
+  top: 460px;
 }
 #retakeBtn {
-    position: absolute;
-    bottom: 150px;
+  position: absolute;
+  right: 20px;
+  top: 480px;
 }
 #downloadBtn {
-    position: absolute;
-    bottom: 100px;
+  position: absolute;
+  right: 20px;
+  top: 540px;
 }
