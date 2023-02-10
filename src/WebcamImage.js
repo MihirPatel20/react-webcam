@@ -7,13 +7,15 @@ function WebcamImage() {
   const [img, setImg] = useState(null);
   const webcamRef = useRef(null);
 
-  let imgWidth = 1920*1.7;  //3264
-  let imgHeight = 1440*1.7;  //2448
+  let imgWidth = 1920 * 1.7; //3264
+  let imgHeight = 1440 * 1.7; //2448
 
   const videoConstraints = {
     width: imgWidth,
     height: imgHeight,
     facingMode: "environment",
+    brightness: false,
+    contrast: true,
   };
 
   const capture = useCallback(() => {
@@ -32,8 +34,7 @@ function WebcamImage() {
           <Webcam
             audio={false}
             mirrored={false}
-            width={1000}
-            height={750}
+            height={"60%"}
             // ref={webcamRef}
             screenshotFormat="image/jpeg"
             videoConstraints={videoConstraints}
@@ -42,10 +43,13 @@ function WebcamImage() {
             <Webcam
               audio={false}
               mirrored={false}
-              width={imgWidth}
-              height={imgHeight}
+              // width={imgWidth}
+              // height={imgHeight}
               ref={webcamRef}
               screenshotFormat="image/jpeg"
+              imageSmoothing={true}
+              screenshotQuality={1}
+              // forceScreenshotSourceSize={true}
               videoConstraints={videoConstraints}
             />
           </div>
@@ -56,9 +60,9 @@ function WebcamImage() {
         </>
       ) : (
         <>
-          <img src={img}  alt="screenshot" />
+          <img src={img} alt="screenshot" />
           <button id="retakeBtn" onClick={() => setImg(null)}>
-            Retake
+            RETAKE
           </button>
         </>
       )}

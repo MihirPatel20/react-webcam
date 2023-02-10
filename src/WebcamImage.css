@@ -8,15 +8,15 @@
   justify-content: center;
   align-items: center;
   margin: 0 10px;
-  border: 20px solid red;
 }
+
 .hiddenDiv {
   position: absolute;
   visibility: hidden;
 }
 
 img {
-  height: 750px;
+  height: 60%;
   /* width: 1000px; */
   object-fit: cover;
 }
@@ -41,7 +41,7 @@ button {
 #retakeBtn {
   position: absolute;
   right: 20px;
-  top: 480px;
+  top: 460px;
 }
 #downloadBtn {
   position: absolute;
