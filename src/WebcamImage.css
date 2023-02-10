@@ -49,3 +49,19 @@ button {
   right: 20px;
   top: 540px;
 }
+#copyBtn {
+  position: absolute;
+  left: 20px;
+  top: 460px;
+}
+#downloadText {
+  position: absolute;
+  left: 20px;
+  top: 540px;
+}
+#checkRes {
+  position: absolute;
+  left: 20px;
+  top: 620px;
+}
+
