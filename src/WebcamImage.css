@@ -16,7 +16,8 @@
 }
 
 img {
-  height: 60%;
+  /* height: 600px; */
+  aspect-ratio: 3/4;
   /* width: 1000px; */
   object-fit: cover;
 }
