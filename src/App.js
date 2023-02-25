@@ -1,11 +1,12 @@
 import React from "react";
-import WebcamImage from "./WebcamImage";
+// import WebcamImage from "./WebcamImage";
 import "./App.css";
+import OCRCamera from "./OCR-camera";
 
 function App() {
   return (
     <div className="App">
-      <WebcamImage />
+      <OCRCamera />
     </div>
   );
 }

@@ -5,53 +5,81 @@ import "./WebcamImage.css";
 
 function WebcamImage() {
   const [img, setImg] = useState(null);
-  const [portrait, setPortrait] = useState(null);
-  const [screen, setScreen] = useState({ width: null, height: null });
+  const [portrait, setPortrait] = useState(true);
+  const [camera, setCamera] = useState({ width: null, height: null });
   const webcamRef = useRef(null);
 
-  window.onload = (e) => {
-    setScreen({ width: window.innerWidth, height: window.screen.availHeight });
-  };
+  // const imgWidth = 4032
+  // const imgHeight =3024
+  console.log(camera.width, camera.height);
 
-  // let orientation = window.screen.orientation.type;
-  let orientation = window.matchMedia("(orientation: portrait)");
-  orientation.onchange = (e) => {
-    setScreen({ width: window.innerWidth, height: window.screen.availHeight });
-    if (e.matches) {
-      setPortrait(true);
-      console.log("port");
-    } else {
-      setPortrait(false);
-      console.log("land");
+  window.onload = () => {
+    const loadOrientation = window.matchMedia(
+      "(orientation: portrait)"
+    ).matches;
+    if (portrait) {
+      setCamera({
+        width: portrait ? 4032 : 3024,
+        height: portrait ? 3024 : 4032,
+      });
     }
+    console.log(loadOrientation);
+    setPortrait(loadOrientation);
   };
+  window
+    .matchMedia("(orientation: portrait)")
+    .addEventListener("change", (e) => {
+      setPortrait(e.matches);
+      setCamera({
+        width: portrait ? 4032 : 3024,
+        height: portrait ? 3024 : 4032,
+      });
 
-  // checkDimentions();
+      // if (portrait) {
+      //   setCamera({
+      //     width: 4032,
+      //     height: 3024,
+      //   });
+      // } else {
+      //   setCamera({
+      //     width: 3024,
+      //     height: 4032,
+      //   });
+      // }
 
-  // let imgWidth = 1920 * 1.7; //3264
-  // let imgHeight = 1440 * 1.7; //2448
-  let imgWidth = 4032;
-  let imgHeight = 3024;
+      console.log(camera.width, camera.height);
+    });
 
   const videoConstraints = {
     // width: imgWidth,
     // height: imgHeight,
-    width: { min: 1920, ideal: imgWidth },
-    height: { min: 1440, ideal: imgHeight },
-    // screenshotQuality: 0.92,
+    width: camera.width,
+    height: camera.height,
     facingMode: "environment",
     brightness: false,
     contrast: true,
   };
 
-  const capture = useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot({
-      height: 4032,
-      width: 3024,
-    });
-    console.log(imageSrc);
-    setImg(imageSrc);
-  }, [webcamRef]);
+  const capture = useCallback(
+    (portrait) => {
+      if (portrait) {
+        const imageSrc = webcamRef.current.getScreenshot({
+          height: 4032,
+          width: 3024,
+        });
+        console.log(imageSrc);
+        setImg(imageSrc);
+      } else {
+        const imageSrc = webcamRef.current.getScreenshot({
+          height: 3024,
+          width: 4032,
+        });
+        console.log(imageSrc);
+        setImg(imageSrc);
+      }
+    },
+    [webcamRef]
+  );
 
   const downloadImage = () => {
     saveAs(img, "OCR.jpg"); // Put your image url here.
@@ -73,8 +101,10 @@ function WebcamImage() {
           <Webcam
             audio={false}
             mirrored={false}
-            width={imgWidth / 5}
-            height={imgHeight / 5}
+            width={"60%"}
+            height={""}
+            minScreenshotHeight={camera.height}
+            minScreenshotWidth={camera.width}
             ref={webcamRef}
             screenshotFormat="image/jpeg"
             videoConstraints={videoConstraints}
@@ -86,7 +116,15 @@ function WebcamImage() {
         </>
       ) : (
         <>
-          <img src={img} style={{ height: imgHeight / 5 }} alt="screenshot" />
+          <img
+            src={img}
+            style={{
+              width: "60%",
+              height: "",
+              aspectRatio: portrait ? 3 / 4 : 4 / 3,
+            }}
+            alt="screenshot"
+          />
           <button id="retakeBtn" onClick={() => setImg(null)}>
             RETAKE
           </button>
@@ -109,7 +147,7 @@ function WebcamImage() {
       </button>
       <button id="checkRes" className="button">
         {/* CHECK {cameraRes.width + "x" + cameraRes.height}{" "} */}
-        {portrait ? "port" : "land"} {screen.width} {screen.height}
+        {portrait ? "port" : "land"}
       </button>
     </div>
   );

@@ -1,0 +1,167 @@
+
+
+.ScanCamera {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 80px 0;
+    width: 95vw;
+    height: 100vh;
+}
+
+
+.dropdown {
+    margin: 0 auto;
+    z-index: 10000;
+    width: 300px;
+    position: relative;
+}
+
+.dropdown,
+.dropdown * {
+    z-index: 10;
+}
+
+.dropdown .dropdown-btn {
+    cursor: pointer;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #777;
+    font-weight: 500;
+}
+
+.dropdown-content {
+    position: absolute;
+    /* top: 110%; */
+    left: 0;
+    width: 100%;
+    color: white;
+    font-weight: 600;
+    background-color: rgb(134, 144, 152);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px !important;
+}
+
+.dropdown-content .item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-content .item:hover {
+    background: #fcfcfc;
+}
+
+
+/* button {
+    z-index: -1;
+    display: block;
+    width: 300px;
+    margin: 0 auto;
+} */
+
+/* OCR animation */
+.scanning {
+    width: 0.3rem;
+    height: 25vh;
+
+    background: rgba(255, 42, 39, 0.89);
+    position: relative;
+    animation: mymove 5s infinite;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px !important;
+}
+
+
+@keyframes mymove {
+    from {
+        left: 0%;
+    }
+
+    to {
+        left: 99%;
+    }
+
+
+}
+
+/* The overlay div */
+#container {
+    /* width: 150px;
+    height: 150px;
+    position: relative;
+    margin: 30px; */
+    display: none;
+    position: relative;
+    width: 60vw;
+    height: 25vh;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset !important;
+}
+
+.box {
+    width: 60vw;
+    height: 25vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    background: #429aff00;
+}
+
+.overlay {
+    top: 0;
+    left: 0;
+    z-index: 9;
+    background: #009938;
+}
+
+.button-30 {
+    text-align: center;
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono", monospace;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s, transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow, transform;
+    font-size: 18px;
+    height: 40px;
+}
+
+.button-30:focus {
+    box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-30:hover {
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+
+.button-30:active {
+    box-shadow: #D6D6E7 0 3px 7px inset;
+    transform: translateY(2px);
+}
